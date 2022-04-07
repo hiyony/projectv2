@@ -25,11 +25,9 @@ import org.apache.struts.action.ActionMapping;
 
 
 
-@WebServlet("/omkjresult.do")
+@WebServlet("/ActionResult.do")
 public class ActionResult extends Action{
 
-	@SuppressWarnings("unused")
-	private static final long serialVersionUID = 1L;
     private static final String path = "/struts-blank-1.3.10/csvomkj.csv";
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

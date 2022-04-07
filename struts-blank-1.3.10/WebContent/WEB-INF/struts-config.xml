@@ -44,25 +44,25 @@
 	<action-mappings>
 	
 
-		<action path = "/omkjinput"
-				type = "omikuji.ActionInput">
-				<forward path = "/OmkjInput.jsp"  name = "input"/>
+		<action path = "/struts/src/omikuji/ActionInput"
+				type = ".struts.src.omikuji.ActionInput">
+				<forward path = "/struts/WebContent/OmkjInput.jsp"  name = "input"/>
 		</action>
-		<action path = "/omkjresult"
-				type = "omikuji.ActionResult">
-				<forward path = "/OmkjResult.jsp" name = "result" />
+		<action path = "/struts/src/omikuji/ActionResult"
+				type = ".struts.src.omikuji.ActionResult">
+				<forward path = "/struts/WebContent/OmkjResult.jsp" name = "result" />
 		</action>
-		<action path = "/omkjinput"
-				type = "omikuji.ActionInput"
+		<action path = "/struts/src/omikuji/ActionInput"
+				type = ".struts.src.omikuji.ActionInput"
 				name = "inputform"
 				scope = "request">
-				<forward path = "/OmkjInput.jsp" name = "input" />
+				<forward path = "/struts/WebContent/OmkjInput.jsp" name = "input" />
 		</action>
-		<action path = "/omkjresult"
-				type = "omikuji.ActionResult"
+		<action path = "/struts/src/omikuji/ActionResult"
+				type = ".struts.src.omikuji.ActionResult"
 				name = "resultform"
 				scope = "request">
-				<forward path = "/OmkjResult.jsp" name = "result" />
+				<forward path = "/struts/WebContent/OmkjResult.jsp" name = "result" />
 		</action>
     </action-mappings>
 
