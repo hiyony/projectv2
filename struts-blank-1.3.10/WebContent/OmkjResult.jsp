@@ -14,7 +14,8 @@
 		<br>願い事 : <%= ResultForm.getNegaigoto() %> 
 		<br>商い : <%= ResultForm.getAkinai() %>
 		<br>学問 : <%= ResultForm.getGakumon() %>
-		<br><input type = "button" value = "戻る" onclick = "location.href = '<%= request.getContextPath() %> input'">
+		<br><input type = "button" value = "戻る" onclick = "location.href = '/struts/OmkjInput.jsp'">
+		<br><input type = "button" value = "結果をもっと見る.." onclick = "location.href = '/struts/SelectView.jsp'"/>
 	</p>
 </body>
 </html>

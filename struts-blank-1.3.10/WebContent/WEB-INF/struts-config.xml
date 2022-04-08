@@ -40,36 +40,28 @@
 
 
 <!-- =========================================== Action Mapping Definitions -->
-
-	<action-mappings>
+	<!-- typeはクラス名 -->
 	
-
-		<action path = "/struts/src/omikuji/ActionInput"
-				type = ".struts.src.omikuji.ActionInput">
-				<forward path = "/struts/WebContent/OmkjInput.jsp"  name = "input"/>
-		</action>
-		<action path = "/struts/src/omikuji/ActionResult"
-				type = ".struts.src.omikuji.ActionResult">
-				<forward path = "/struts/WebContent/OmkjResult.jsp" name = "result" />
-		</action>
-		<action path = "/struts/src/omikuji/ActionInput"
-				type = ".struts.src.omikuji.ActionInput"
+	<action-mappings>
+		<action path = "/ActionInput"
+				type = "omikuji.ActionInput"
 				name = "inputform"
 				scope = "request">
-				<forward path = "/struts/WebContent/OmkjInput.jsp" name = "input" />
+				<forward path = "/ActionResult.do" name = "success" />
+				<forward path = "/OmkjInput.jsp" name = "fail" />
 		</action>
-		<action path = "/struts/src/omikuji/ActionResult"
-				type = ".struts.src.omikuji.ActionResult"
+		<action path = "/ActionResult"
+				type = "omikuji.ActionResult"
 				name = "resultform"
 				scope = "request">
-				<forward path = "/struts/WebContent/OmkjResult.jsp" name = "result" />
+				<forward path = "/OmkjResult.jsp" name = "success" />
 		</action>
     </action-mappings>
 
 	<controller processorClass="org.apache.struts.action.RequestProcessor"/> 
 <!-- ======================================== Message Resources Definitions -->
 
-    <message-resources parameter="MessageResources" />
+    <message-resources parameter="/src/MessageResources" />
 
 
 <!-- =============================================== Plug Ins Configuration -->

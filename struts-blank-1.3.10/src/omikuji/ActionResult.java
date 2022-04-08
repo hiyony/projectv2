@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,11 +23,9 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 
-
-@WebServlet("/ActionResult.do")
 public class ActionResult extends Action{
 
-    private static final String path = "/struts-blank-1.3.10/csvomkj.csv";
+    private static final String path = "/struts/csvomkj.csv";
 
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");
@@ -237,8 +234,6 @@ public class ActionResult extends Action{
             
 //            RequestDispatcher rd = request.getRequestDispatcher("/OmkjResult.jsp");
 //            rd.forward(request, response);
-           
-
 
         } catch (SQLException e){
             e.printStackTrace();
@@ -248,7 +243,7 @@ public class ActionResult extends Action{
                 br.close();
             }
         }
-		return mapping.findForward("result");
+		return mapping.findForward("success");
     }
 
     public static Unsei selectUnsei(String unseistr) {
