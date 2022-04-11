@@ -13,6 +13,8 @@
 				   type = "omikuji.InputForm" />
 		<form-bean name = "resultform" 
 				   type = "omikuji.ResultForm"/>
+		<form-bean name = "halfform"
+				   type = "omikuji.HalfForm" />
     </form-beans>
     
 
@@ -55,6 +57,12 @@
 				name = "resultform"
 				scope = "request">
 				<forward path = "/OmkjResult.jsp" name = "success" />
+		</action>
+		<action path = "/HalfResult"
+				type = "omikuji.HalfResult"
+				name = "halfform"
+				scope = "request">
+				<forward path = "/OmkjHalfresult.jsp" name = "success" />
 		</action>
     </action-mappings>
 

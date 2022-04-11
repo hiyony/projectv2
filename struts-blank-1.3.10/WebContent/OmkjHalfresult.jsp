@@ -1,21 +1,13 @@
-<%@ page import = "omikuji.DBUtil" %>
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.Connection"%>
-<%@ page import="java.sql.PreparedStatement"%>
+<%@ page import="omikuji.HalfResult" %>
+<%@ page import="omikuji.HalfForm" %>
 <%@ page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%! //변수선언
-	Connection conn = null;
-	String select_sql = "SELECT * from public.unseiresult u "
-			+ "WHERE (SELECT CAST(u.uranaidate AS date) AS uradate) " 
-			+ "BETWEEN CURRENT_TIMESTAMP - INTERVAL '6 months' "
-			+ "AND CURRENT_TIMESTAMP "
-			+ "AND birthday = '19971005' "
-			+ "ORDER BY u.uranaidate ASC";
-	PreparedStatement pstmt = null;
-	ResultSet rs = null; %>
+<%=
+	HalfForm halfform = (HalfForm) form;
+	ResultSet rs = request.getAttribute("resultset");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,12 +15,6 @@
 <title>Omikuji Web Service</title>
 </head>
 <body>
-	<%
-		try{
-			conn = DBUtil.getConnection();
-			pstmt = conn.prepareStatement(select_sql);
-			rs = pstmt.executeQuery();
-	%>
 	<h1>Omikuji Web Service</h1>
 	<h4>~ 半年前から今までの結果リスト ~</h4>
 	<br>
@@ -46,19 +32,16 @@
 			while(rs.next()) {
 		%>
 		<tr>
-			<td><%= rs.getString("uranaidate") %></td>
-			<td><%= rs.getString("birthday") %></td>
-			<td><%= rs.getString("omikujicode") %></td>
-			<td><%= rs.getString("renewalwriter") %></td>
-			<td><%= rs.getString("renewaldate") %></td>
-			<td><%= rs.getString("unseiwriter") %></td>
-			<td><%= rs.getString("unseiwritedate") %></td>
+			<td><%= halfform.getUranaidate() %></td>
+			<td><%= halfform.getBirthday() %></td>
+			<td><%= halfform.getOmikujicode() %></td>
+			<td><%= halfform.getRenewalwriter() %></td>
+			<td><%= halfform.getRenewaldate() %></td>
+			<td><%= halfform.getUnseiwriter() %></td>
+			<td><%= halfform.getUnseiwritedate() %></td>
 		</tr>
 		<%
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		%>
 	</table>
 </body>
