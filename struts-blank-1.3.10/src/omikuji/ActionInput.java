@@ -7,6 +7,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 
 public class ActionInput extends Action {
 	
@@ -16,14 +18,18 @@ public class ActionInput extends Action {
 		InputForm inputform = (InputForm) form;
 		inputform.setBirthday(request.getParameter("birthday"));
 		
-		String birthday = inputform.getBirthday();
+		String birthday = InputForm.getBirthday();
 		Boolean checkbday = Checkbirthday.checkbday(birthday);
 		request.setAttribute("birthday", birthday);
 		
 		if(checkbday.equals(true)) {
 			return mapping.findForward("success");
 		} else {
-			request.setAttribute("msg", "入力された形式が正しくありません。yyyyMMdd形式の８文字でお願いします。");
+			//request.setAttribute("msg", "入力された形式が正しくありません。yyyyMMdd形式の８文字でお願いします。");
+			ActionMessages errors = new ActionMessages();
+			errors.add("errmsg", new ActionMessage("errmsg","ERROR!"));
+			saveMessages(request, errors);
+			
 			return mapping.findForward("fail");
 		}
 	}

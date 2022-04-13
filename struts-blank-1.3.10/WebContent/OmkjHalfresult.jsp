@@ -1,13 +1,13 @@
-<%@ page import="omikuji.HalfResult" %>
-<%@ page import="omikuji.HalfForm" %>
-<%@ page import="java.sql.ResultSet"%>
+<%@ taglib uri="/WEB-INF/TLD/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="WEB-INF/TLD/struts-html.tld" prefix="html" %>
+<%@ taglib uri="WEB-INF/TLD/struts-bean.tld" prefix="bean" %>
+<%@ page import="java.util.*" %>
+<%@ page import="omikuji.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%=
-	HalfForm halfform = (HalfForm) form;
-	ResultSet rs = request.getAttribute("resultset");
-%>
+<jsp:useBean id="halfresult" class="omikuji.HalfResult" scope="page"></jsp:useBean>
+<jsp:useBean id="dto" class="omikuji.HalfDTO" scope="page"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,21 +28,45 @@
 			<td>運勢の作成者</td>
 			<td>運勢の作成日</td>
 		</tr>
-		<%
-			while(rs.next()) {
+		<%-- <%
+			String birthday = InputForm.getBirthday();
+			List<HalfDTO> list = halfresult.rslist(birthday);
+			for(int i=0; i<list.size(); i++){
+				dto = list.get(i);
 		%>
 		<tr>
-			<td><%= halfform.getUranaidate() %></td>
-			<td><%= halfform.getBirthday() %></td>
-			<td><%= halfform.getOmikujicode() %></td>
-			<td><%= halfform.getRenewalwriter() %></td>
-			<td><%= halfform.getRenewaldate() %></td>
-			<td><%= halfform.getUnseiwriter() %></td>
-			<td><%= halfform.getUnseiwritedate() %></td>
+			<td><%= dto.getUranaidate() %></td>
+			<td><%= dto.getBirthday() %></td>
+			<td><%= dto.getOmikujicode() %></td>
+			<td><%= dto.getRenewalwriter() %></td>
+			<td><%= dto.getRenewaldate() %></td>
+			<td><%= dto.getUnseiwriter() %></td>
+			<td><%= dto.getUnseiwritedate() %></td>
 		</tr>
 		<%
 			}
-		%>
+		%> --%>
+		<logic:iterate id = "HalfDTO" name = "HalfDTO" property = "Halflist">
+		<tr>
+			<td><bean:write name = "HalfDTO" property = "uranaidate" /></td>
+			<td><bean:write name = "HalfDTO" property = "birthday" /></td>
+			<td><bean:write name = "HalfDTO" property = "omikujicode" /></td>
+			<td><bean:write name = "HalfDTO" property = "renewalwriter" /></td>
+			<td><bean:write name = "HalfDTO" property = "renewaldate" /></td>
+			<td><bean:write name = "HalfDTO" property = "unseiwriter" /></td>
+			<td><bean:write name = "HalfDTO" property = "unseiwritedate" /></td>
+		</tr>
+		</logic:iterate>
 	</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

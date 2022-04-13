@@ -27,5 +27,21 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
+  <!-- Struts Tag Library Descriptors -->
+  <taglib>
+    <taglib-uri>/tags/struts-bean</taglib-uri>
+    <taglib-location>/WEB-INF/TLD/struts-bean.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-html</taglib-uri>
+    <taglib-location>/WEB-INF/TLD/struts-html.tld</taglib-location>
+
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-logic</taglib-uri>
+    <taglib-location>/WEB-INF/TLD/struts-logic.tld</taglib-location>
+  </taglib>
 
 </web-app>

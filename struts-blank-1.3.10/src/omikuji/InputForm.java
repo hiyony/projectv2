@@ -3,13 +3,13 @@ package omikuji;
 import org.apache.struts.action.ActionForm;
 
 public class InputForm extends ActionForm{
-	private String birthday;
+	private static String birthday;
 	
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	
-	public String getBirthday() {
+	public static String getBirthday() {
 		return birthday;
 	}
 }

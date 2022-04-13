@@ -1,3 +1,6 @@
+<%@ taglib uri="/WEB-INF/TLD/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="WEB-INF/TLD/struts-html.tld" prefix="html" %>
+<%@ taglib uri="WEB-INF/TLD/struts-bean.tld" prefix="bean" %>
 <%@ page import = "omikuji.InputForm" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -25,7 +28,11 @@
 		<span>お誕生日を入力してください！</span>
 		<input type = "text" name = "birthday" placeholder = "yyyyMMddの形式" />
 		<input type = "submit" value = "確認"/>
-		<p><%= request.getAttribute("msg") %></p>
+		<p>
+			<html:messages id="msg" message = "true" property = "errmsg">
+				<bean:write name="msg" />
+			</html:messages>
+		</p>
 	</form>
 </body>
 </html>
