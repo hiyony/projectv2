@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,12 +42,16 @@ public class PercentResult extends Action{
 				PercentForm.setUnseiname(rs.getString("unseiname"));;
 				PercentForm.setCnt(rs.getInt("cnt"));;
 			}
+			
+			RequestDispatcher rd = request.getRequestDispatcher("OmkjPercent.jsp");
+			request.setAttribute("result", rs);
+			rd.forward(request, response);
 		
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return mapping.findForward("success");
 		
 	}
 }

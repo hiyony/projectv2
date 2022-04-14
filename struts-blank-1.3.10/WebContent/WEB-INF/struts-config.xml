@@ -53,6 +53,8 @@
 				scope = "request">
 				<forward path = "/ActionResult.do" name = "success" />
 				<forward path = "/OmkjInput.jsp" name = "fail" />
+				<forward path = "/HalfResult.do" name = "test1" />
+				<forward path = "/PercentResult.do" name = "test2" />
 		</action>
 		<action path = "/ActionResult"
 				type = "omikuji.ActionResult"
@@ -77,7 +79,7 @@
 	<controller processorClass="org.apache.struts.action.RequestProcessor"/> 
 <!-- ======================================== Message Resources Definitions -->
 
-    <message-resources parameter="WEB-INF.lib.src.java.MessageResources" />
+    <message-resources parameter="MessageResources" />
 
 
 <!-- =============================================== Plug Ins Configuration -->

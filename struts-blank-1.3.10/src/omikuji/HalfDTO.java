@@ -83,5 +83,13 @@ public class HalfDTO implements Serializable{
 		this.unseiwritedate = unseiwritedate;
 	}
 	
-	
+	public String toString() {
+		return "HalfDTO[ uranaidate =" + uranaidate 
+				+ ", birthday = " + birthday 
+				+ ", omikujicode = " + omikujicode 
+				+ ", renewalwriter = " + renewalwriter
+				+ ", renewaldate = " + renewaldate
+				+ ", unseiwriter = " + unseiwriter 
+				+ ", unseiwritedate = " + unseiwritedate;
+	}
 }

@@ -5,9 +5,9 @@
 <%@ page import="omikuji.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<jsp:useBean id="halfresult" class="omikuji.HalfResult" scope="page"></jsp:useBean>
-<jsp:useBean id="dto" class="omikuji.HalfDTO" scope="page"></jsp:useBean>
+<!--
+<jsp:useBean id="halfform" class="omikuji.HalfForm"></jsp:useBean>
+<jsp:useBean id="dto" class="omikuji.HalfDTO"></jsp:useBean>  -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +46,8 @@
 		<%
 			}
 		%> --%>
-		<logic:iterate id = "HalfDTO" name = "HalfDTO" property = "Halflist">
+<%-- 		<bean:write name="halfform" property="sampleStr" scope="request" /> --%>
+		<logic:iterate id = "HalfDTO" name = "list">
 		<tr>
 			<td><bean:write name = "HalfDTO" property = "uranaidate" /></td>
 			<td><bean:write name = "HalfDTO" property = "birthday" /></td>

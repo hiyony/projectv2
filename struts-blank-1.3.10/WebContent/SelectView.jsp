@@ -9,8 +9,11 @@
 <body>
 	<h1>Omikuji Web Service</h1>
 	<h4>~ Select button that you want to check ~</h4>
-	
-	<br><input type = "button" value = "過去半年の結果リスト" onclick = "location.href = '/struts/OmkjHalfresult.jsp'"/>
-	<br><input type = "button" value = "占い結果の割合" onclick = "location.href = '/struts/OmkjPercent.jsp'"/>
+	<form action = "<%= request.getContextPath() %>/HalfResult.do" method = "POST">
+		<br><input type = "submit" value = "過去半年の結果リスト" />
+	</form>
+	<!-- <form>
+		<br><input type = "submit" value = "占い結果の割合" onclick = "location.href = '/struts/OmkjPercent.jsp'"/>
+	</form> -->
 </body>
 </html>

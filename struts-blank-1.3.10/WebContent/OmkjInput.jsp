@@ -23,16 +23,34 @@
 </style>
 </head>
 <body>	
-	<h1>Omikuji Web Service</h1>
-	<form action = "<%= request.getContextPath()%>/ActionInput.do" method = "POST" id = "input-form">
+	<h1>Omikuji Web Service</h1> 
+	<form id = "input-form">
 		<span>お誕生日を入力してください！</span>
 		<input type = "text" name = "birthday" placeholder = "yyyyMMddの形式" />
-		<input type = "submit" value = "確認"/>
+		<input type = "submit"
+				name = "btn"
+				value = "確認"
+				formaction = "<%= request.getContextPath()%>/ActionInput.do"
+				formmethod = "POST" />
 		<p>
-			<html:messages id="msg" message = "true" property = "errmsg">
+			<html:messages id="msg" message = "true" property = "errmsg.1">
 				<bean:write name="msg" />
 			</html:messages>
-		</p>
+		</p>		
+				
+		<br><br>
+		上にお誕生日を入力してクリックしてください！
+		<input type = "submit"
+				name = "btn"
+				value = "click1"
+				formaction = "<%= request.getContextPath()%>/HalfResult.do"
+				formmethod = "POST" />
+		<input type = "submit"
+				name = "btn"
+				value = "click2"
+				formaction = "<%= request.getContextPath()%>/PercentResult.do"
+				formmethod = "POST" />
+		
 	</form>
 </body>
 </html>

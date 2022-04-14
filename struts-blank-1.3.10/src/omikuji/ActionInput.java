@@ -18,19 +18,26 @@ public class ActionInput extends Action {
 		InputForm inputform = (InputForm) form;
 		inputform.setBirthday(request.getParameter("birthday"));
 		
+		String button = request.getParameter("btn");
 		String birthday = InputForm.getBirthday();
 		Boolean checkbday = Checkbirthday.checkbday(birthday);
 		request.setAttribute("birthday", birthday);
-		
-		if(checkbday.equals(true)) {
-			return mapping.findForward("success");
+
+		if(button.equals("click1")) {
+			return mapping.findForward("test1");
+		} else if(button.equals("click2")) {
+			return mapping.findForward("test2");
 		} else {
-			//request.setAttribute("msg", "入力された形式が正しくありません。yyyyMMdd形式の８文字でお願いします。");
-			ActionMessages errors = new ActionMessages();
-			errors.add("errmsg", new ActionMessage("errmsg","ERROR!"));
-			saveMessages(request, errors);
-			
-			return mapping.findForward("fail");
+			if(checkbday.equals(true)) {
+				return mapping.findForward("success");
+			} else {
+				//request.setAttribute("msg", "入力された形式が正しくありません。yyyyMMdd形式の８文字でお願いします。");
+				ActionMessages errors = new ActionMessages();
+				errors.add("errmsg.1", new ActionMessage("errmsg.num","ERROR!"));
+				saveMessages(request, errors);
+					
+				return mapping.findForward("fail");
+			}
 		}
 	}
 
