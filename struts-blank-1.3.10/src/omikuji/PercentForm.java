@@ -1,33 +1,18 @@
 package omikuji;
 
+import java.util.List;
+
 import org.apache.struts.action.ActionForm;
 
 public class PercentForm extends ActionForm{
-	protected static String unseiname;
-	protected static String birthday;
-	protected static Integer cnt;
 	
-	public static String getBirthday() {
-		return birthday;
+	protected List<PercentDTO> perresultlist;
+
+	public List<PercentDTO> getPerresultlist() {
+		return perresultlist;
 	}
-	
-	public static void setBirthday(String birthday) {
-		PercentForm.birthday = birthday;
+
+	public void setPerresultlist(List<PercentDTO> perresultlist) {
+		this.perresultlist = perresultlist;
 	}
-	
-	public static String getUnseiname() {
-		return unseiname;
-	}
-	
-	public static void setUnseiname(String unseiname) {
-		PercentForm.unseiname = unseiname;
-	}
-	
-	public static Integer getCnt() {
-		return cnt;
-	}
-	
-	public static void setCnt(Integer cnt) {
-		PercentForm.cnt = cnt;
-	}	
 }

@@ -30,9 +30,6 @@ public class ActionResult extends Action{
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");
 
-        //Inputservlet으로부터 생일 파라미터를 받아와서 yyyyMMdd 형식으로 바꾸어줌
-        //Inputservletから誕生日パラメーターを受け入れてyyyyMMddの形式に変える
-
         String birthday = (String) request.getAttribute("birthday");
 
         LocalDate today = LocalDate.now();

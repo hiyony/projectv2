@@ -17,6 +17,8 @@
 				   type = "omikuji.HalfForm" />
 		<form-bean name = "percentform"
 				   type = "omikuji.PercentForm" />
+		<form-bean name = "validateform"
+				   type = "omikuji.ValidateForm" />
     </form-beans>
     
 
@@ -49,12 +51,11 @@
 	<action-mappings>
 		<action path = "/ActionInput"
 				type = "omikuji.ActionInput"
-				name = "inputform"
-				scope = "request">
+				name = "validateform"
+				validate = "true"
+				input = "/OmkjInput.jsp">
 				<forward path = "/ActionResult.do" name = "success" />
 				<forward path = "/OmkjInput.jsp" name = "fail" />
-				<forward path = "/HalfResult.do" name = "test1" />
-				<forward path = "/PercentResult.do" name = "test2" />
 		</action>
 		<action path = "/ActionResult"
 				type = "omikuji.ActionResult"
