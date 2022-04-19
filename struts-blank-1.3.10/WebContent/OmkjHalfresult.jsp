@@ -1,7 +1,6 @@
 <%@ taglib uri="/WEB-INF/TLD/struts-logic.tld" prefix="logic" %>
 <%@ taglib uri="WEB-INF/TLD/struts-html.tld" prefix="html" %>
 <%@ taglib uri="WEB-INF/TLD/struts-bean.tld" prefix="bean" %>
-<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
 <%@ page import="java.util.*" %>
 <%@ page import="omikuji.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -41,14 +40,13 @@
 		
 		<logic:iterate id = "HalfDTO" name = "list">
 		<tr>
-			<fmt:parseDate value = "${HalfDTO.uranaidate}" pattern = "yyyy/MM/dd" />
-			<td><bean:write name = "HalfDTO" property = "uranaidate" /></td>
-			<td><bean:write name = "HalfDTO" property = "birthday" /></td>
+			<td><bean:write name = "HalfDTO" property = "uranai" format = "yyyy/MM/dd" /></td>
+			<td><bean:write name = "HalfDTO" property = "bday" format = "yyyy/MM/dd" /></td>
 			<td><bean:write name = "HalfDTO" property = "omikujicode" /></td>
 			<td><bean:write name = "HalfDTO" property = "renewalwriter" /></td>
-			<td><bean:write name = "HalfDTO" property = "renewaldate" /></td>
+			<td><bean:write name = "HalfDTO" property = "rndate" format = "yyyy/MM/dd"/></td>
 			<td><bean:write name = "HalfDTO" property = "unseiwriter" /></td>
-			<td><bean:write name = "HalfDTO" property = "unseiwritedate" /></td>
+			<td><bean:write name = "HalfDTO" property = "usdate" format = "yyyy/MM/dd"/></td>
 		</tr>
 		</logic:iterate>
 	</table>

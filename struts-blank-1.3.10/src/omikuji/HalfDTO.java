@@ -1,6 +1,8 @@
 package omikuji;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class HalfDTO implements Serializable{
 	
@@ -82,4 +84,71 @@ public class HalfDTO implements Serializable{
 	public void setUnseiwritedate(String unseiwritedate) {
 		this.unseiwritedate = unseiwritedate;
 	}
+	
+	public java.util.Date getUranai(){
+		java.util.Date uranai = null;
+		
+		if(uranaidate == null || uranaidate.isEmpty()) {	
+		} else {
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+				return format.parse(uranaidate);			
+			} catch (ParseException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return uranai;
+	}
+	
+	public java.util.Date getBday(){
+		java.util.Date bday = null;
+		
+		if(birthday == null || birthday.isEmpty()) {	
+		} else {
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+				return format.parse(birthday);			
+			} catch (ParseException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return bday;
+	}
+	
+	public java.util.Date getRndate(){
+		java.util.Date rndate = null;
+		
+		if(renewaldate == null || renewaldate.isEmpty()) {	
+		} else {
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+				return format.parse(renewaldate);			
+			} catch (ParseException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return rndate;
+	}
+	
+	public java.util.Date getUsdate(){
+		java.util.Date usdate = null;
+		
+		if(unseiwritedate == null || unseiwritedate.isEmpty()) {	
+		} else {
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+				return format.parse(unseiwritedate);			
+			} catch (ParseException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return usdate;
+	}
 }
+
+
+
+
+
+
+

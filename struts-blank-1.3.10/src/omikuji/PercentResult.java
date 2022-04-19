@@ -40,18 +40,16 @@ public class PercentResult extends Action{
 			//    →(ROUND() 구문 : , SUM() OVER() 구문 : 누적 합)
 			//運勢名、それぞれの運勢数、運勢の割合のためのSQL文を作成
 			
-			String count_sql = "SELECT g1.unseiname AS unseiname, "
-									+ "COUNT(g1.unseiname) AS cnt,"
-									+ "ROUND((100 * COUNT(g1.unseiname) / SUM(COUNT(g1.unseiname)) OVER()::numeric), 2) AS per "
-					+ "FROM public.unseiresult u "
-					+ "JOIN (SELECT o.omikujicode AS omkjcode, f.unseicode AS code, f.unseiname AS unseiname "
-							+ "FROM public.fortunemaster f "
-							+ "RIGHT OUTER JOIN public.omikujii o "
-							+ "ON f.unseicode = o.unseicode) AS g1 "
-					+ "ON u.omikujicode = g1.omkjcode "
-					+ "WHERE birthday = ? "
-					+ "GROUP BY g1.unseiname, g1.code "
-					+ "ORDER BY g1.code asc";
+			String count_sql = "SELECT DISTINCT f.unseicode, f.unseiname, r.cnt, r.per "
+					+ "FROM (SELECT u.birthday, f.unseiname AS usname, COUNT(f.unseiname) AS cnt, "
+								  + "ROUND((100 * COUNT(f.unseiname) / SUM(COUNT(f.unseiname)) OVER()::numeric), 2) AS per "
+							+ "FROM omikujii o "
+							+ "RIGHT OUTER JOIN fortunemaster f ON o.unseicode = f.unseicode "
+							+ "RIGHT OUTER JOIN unseiresult u ON o.omikujicode = u.omikujicode "
+							+ "WHERE birthday = ? "
+							+ "GROUP BY u.birthday, f.unseiname, f.unseicode) AS r "
+					+ "RIGHT OUTER JOIN fortunemaster f ON f.unseiname = r.usname "
+					+ "ORDER BY f.unseicode ASC;";
 			PreparedStatement pstmt2 = conn.prepareStatement(count_sql);
 			pstmt2.setString(1, birthday);
 			
